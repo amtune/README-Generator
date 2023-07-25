@@ -1,19 +1,55 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
-function renderLicenseBadge(license) {}
+const renderLicenseBadge = (data) => {
+  if (data.license === "None") {
+      return '';
+  } else {
+      return `![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)`;
+  }
+}
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) {}
+// License table of contents
+const renderLicenseTOC = (data) => {
+  if (data.license === "None") {
+      return '';
+  } else {
+      return '* [License](#license)';
+  }
+}
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {}
+const renderLicenseSection = (data) => {
+  if(data.license === "MIT") {
+    return `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`
+  }
+  if(data.license === "Apache") {
+    return `[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)`
+  }
+  if(data.license === "Boost") {
+    return `[![License](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)`
+  } 
+  if(data.license === "None") {
+    return ``
+  }
+}
 
-// TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `# ${data.title}
-
+  # Description
+  ${data.description}
+  # Table of Contents 
+  * [Installation](#installation)
+  * [Usage](#usage)
+  ${renderLicenseTOC(data)}
+  * [Contributing](#contributing)
+  * [Tests](#tests)
+  * [Questions](#questions)
+  # Installation
+  The following necessary dependencies must be installed to run the application properly: ${data.installation}
+  # Usage
+  In order to use this app, ${data.usage}
+  ${renderLicenseSection(data)}
+  # Contributions
+  ​Contributors: ${data.credits}
+  # Tests
+  The following is needed to run tests: ${data.tests}
 `;
 }
 
